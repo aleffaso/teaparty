@@ -5,11 +5,21 @@
       <div class="row align-items-start">
         <div class="col-md-2">
           <ul class="custom-menu">
-            <li class="active"><a href="/">Início</a></li>
-            <li><a href="/#products">Produtos</a></li>
-            <li><a href="/#testimonials">Depoimentos</a></li>
-            <li><a href="/#contact">Contato</a></li>
-            <li><a href="/login">Login</a></li>
+            <% if (token==undefined){ %>
+              <li class="active"><a href="/">Início</a></li>
+              <li><a href="/#products">Produtos</a></li>
+              <li><a href="/#testimonials">Depoimentos</a></li>
+              <li><a href="/#contact">Contato</a></li>
+              <li><a href="/login">Login</a></li>
+            <% }else{ %>
+              <li class="active"><a href="/">Início</a></li>
+              <li><a href="/#products">Produtos</a></li>
+              <li><a href="/#testimonials">Depoimentos</a></li>
+              <li><a href="/#contact">Contato</a></li>
+              <li><a href="/admin/users">Usuários</a></li>
+              <li><a href="/admin/products">Produtos</a></li>
+              <li><a href="/logout">Logout</a></li>
+            <% } %>
           </ul>
         </div>
         <div class="col-md-4 d-none d-md-block">
@@ -24,7 +34,7 @@
   <nav class="navbar navbar-light custom-navbar">
     <div class="container">
       <a class="navbar-brand" href="/">Meu Chá de Casa Nova Minha Vida .com</a>
-      <a href="#" class="burger" data-bs-toggle="collapse" data-bs-target="#main-navbar">
+      <a class="burger" href="/" data-bs-toggle="collapse" data-bs-target="#main-navbar">
         <span></span>
       </a>
     </div>

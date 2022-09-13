@@ -10,4 +10,13 @@
         </main>
     </body>
     <%- include("partials/footer.ejs") %>
+    <% if(message==true){ %>
+        <script>
+            renderSuccessMessage('<%=title%>')
+        </script>
+    <% }else if(message==false){ %> %>
+        <script>
+            renderFailMessage('<%=title%>')
+        </script>
+    <% } %>
 </html>

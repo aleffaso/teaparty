@@ -7,32 +7,55 @@
         </div>
       </div>
       <div id="portfolio-grid" class="row no-gutter" data-aos="fade-up" data-aos-delay="200">
-        <div class="item branding col-sm-6 col-md-4 col-lg-4 mb-4">
-          <a class="item-wrap fancybox">
-            <div class="work-info">
-              <h3>Título</h3>
-              <span>Disponível para presente</span>
-              <div style="padding: 10% 19%;" class="text-center">
-                <form class="form-control" method="POST" action="/send">
-                  <input class="form-control" placeholder="seuemail@mail.com">
-                  <br>
-                  <button type="submit" class="btn btn-dark">Enviar</button>
-                </form>
-              </div>  
-            </div>
-            <img class="img-fluid" src="img/img_6.jpg">
-          </a>
-        </div>
-
-        <div class="item branding col-sm-6 col-md-4 col-lg-4 mb-4">
-          <a class="item-wrap fancybox">
-            <div class="work-info">
-              <h3>Título</h3>
-              <span>Produto indisponível :(</span>
-            </div>
-            <img class="img-fluid" src="img/img_6.jpg">
-          </a>
-        </div>
+          <% products.forEach(products => { %>
+            <% if (!products.person){ %>
+              <div class="item branding col-sm-6 col-md-4 col-lg-4 mb-4">
+                <a class="item-wrap fancybox">
+                  <div class="work-info">
+                    <h3><%=products.title %></h3>
+                    <br>
+                    <span>Disponível para presente</span>
+                    <br>
+                    <div style="padding: 10% 19%;" class="text-center">
+                      <form class="form-control" method="POST" action="/update">
+                        <input class="form-control" name="person" placeholder="seuemail@mail.com">
+                        <input type="hidden" name="id" value="<%= products.id %>"> 
+                        <input type="hidden" name="title" value="<%= products.title %>"> 
+                        <input type="hidden" name="picture" value="<%= products.picture %>"> 
+                        <input type="hidden" name="link" value="<%= products.link %>"> 
+                        <br>
+                        <button type="submit" class="btn btn-dark">Enviar</button>
+                      </form>
+                    </div>  
+                  </div>
+                  <img class="img-fluid" src="<%= products.picture %>">
+                </a>
+              </div>
+            <% }else if (products.person){ %>
+              <div class="item branding col-sm-6 col-md-4 col-lg-4 mb-4">
+                <a class="item-wrap fancybox">
+                  <div class="work-info">
+                    <h3><%=products.title %></h3>
+                    <br>
+                    <span>Alguém já escolheu esse item, mas você pode escolher outro :D</span>
+                    <br>
+                    <br>
+                    <button onClick="window.open('<%= products.link %>', '_blank')" class="btn btn-light">Sugestão de compra para este item</button>
+                  </div>
+                  <img class="img-fluid" src="<%= products.picture %>">
+                </a>
+              </div>
+            <% } %>
+          <% }) %>
       </div>
     </div>
+    <% if(message==true){ %>
+      <script>
+          renderSuccessMessage('<%=title%>')
+      </script>
+  <% }else if(message==false){ %> %>
+      <script>
+          renderFailMessage('<%=title%>')
+      </script>
+  <% } %>
   </section>

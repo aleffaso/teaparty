@@ -102,7 +102,7 @@ h6,
 
 .item .item-wrap img {
   transition: 0.3s transform ease;
-  transform: scale(1);
+  transform: scale(0.8);
 }
 
 .item .item-wrap>.work-info {

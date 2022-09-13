@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("../../partials/head.ejs") %>
+    <body>
+        <%- include("../../partials/navbar.ejs") %>
+        <main>
+            <section class="section site-portfolio bg-dark">
+                <div class="container d-flex justify-content-center mt-4 mb-4">
+                    <div class="card text-center">
+                        <div class="card-header" style="width: 18rem;"><br>
+                            <p class="fs-4">Editar produto</p>
+                        </div>
+                        <div class="card-body">
+                            <form method="POST" action="/product/update">
+                                <br>
+                                <input class="form-control" name="title" type="text" placeholder="Titulo" value="<%= product.title %>">
+                                <br>
+                                <input class="form-control" name="picture" type="text" placeholder="Link da imagem" value="<%= product.picture %>">
+                                <br>
+                                <input class="form-control" name="link" type="text" placeholder="Link de compra" value="<%= product.link %>">
+                                <br>
+                                <input type="hidden" name="id" value="<%= product.id %>"> 
+                                <button type="submit" class="btn btn-success btn-block">Atualizar</button>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <%- include("../../sections/03_footer.ejs") %>
+        </main>
+    </body>
+    <%- include("../../partials/footer.ejs") %>
+</html>

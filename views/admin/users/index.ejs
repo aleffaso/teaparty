@@ -4,7 +4,7 @@
     <body>
         <%- include("../../partials/navbar.ejs") %>
         <main>
-            <section class="section site-portfolio">
+            <section class="section site-portfolio bg-dark mb-4">
                 <div class="d-flex justify-content-center"  style="padding-top: 5rem;">
                     <div class="card text-center mt-4">
                         <div class="container text-center mt-4">
@@ -38,4 +38,13 @@
         </main>
     </body>
     <%- include("../../partials/footer.ejs") %>
+    <% if(message==true){ %>
+        <script>
+            renderSuccessMessage('<%=title%>')
+        </script>
+    <% }else if(message==false){ %> %>
+        <script>
+            renderFailMessage('<%=title%>')
+        </script>
+    <% } %>
 </html>

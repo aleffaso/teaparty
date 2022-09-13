@@ -1,14 +1,12 @@
-
 function renderSuccessMessage(title){
-    Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: title,
-      confirmButtonColor: '#009dff',
-      showConfirmButton: true,
-      timer: 1500
-    })
-  }
+  Swal.fire({
+    position: 'center',
+    icon: 'success',
+    title: title,
+    confirmButtonColor: '#009dff',
+    showConfirmButton: true
+  })
+}
   
   function renderFailMessage(title){
     Swal.fire({

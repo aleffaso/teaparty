@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("../../partials/head.ejs") %>
+    <body>
+        <%- include("../../partials/navbar.ejs") %>
+        <main>
+            <section class="section site-portfolio bg-dark mb-4">
+                <div class="d-flex justify-content-center"  style="padding-top: 5rem;">
+                    <div class="card text-center mt-4">
+                        <div class="container text-center mt-4">
+                            <a class="btn btn-success" href="/admin/product/new">Criar novo produto</a>
+                            <table class="table table-bordered mt-4">
+                                <thead>
+                                    <tr>
+                                        <th>Produto</th>
+                                        <th>Editar</th>
+                                        <th>Deletar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% products.forEach(products => {%>
+                                    <tr>
+                                            <td><%= products.title%></td>
+                                            <td><a class="btn btn-warning" href="/admin/products/edit/<%= products.id %>">Editar</a></th>
+                                            <form method="POST" action="/products/delete" onsubmit=deleteCheck(event,this)>
+                                                <input type="hidden" name="id" value="<%= products.id %>">
+                                                <td><button class="btn btn-danger">Deletar</button></td>
+                                            </form>
+                                    </tr>
+                                    <% }) %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <%- include("../../sections/03_footer.ejs") %>
+        </main>
+    </body>
+    <%- include("../../partials/footer.ejs") %>    
+    <% if(message==true){ %>
+        <script>
+            renderSuccessMessage('<%=title%>')
+        </script>
+    <% }else if(message==false){ %> %>
+        <script>
+            renderFailMessage('<%=title%>')
+        </script>
+    <% } %>
+</html>
