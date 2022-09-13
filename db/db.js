@@ -12,4 +12,5 @@ const connection = new Sequelize(
         dialect: process.env.POSTGRES_DIALECT,
         timezone: process.env.POSTGRES_TIMEZONE
     });
+
 module.exports = connection;

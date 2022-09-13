@@ -4,7 +4,7 @@ const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 
-
+const users = require('./controllers/users')
 const routes = require('./config/routes');
 
 //Set envkeys
@@ -28,6 +28,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 //routes
+app.use("/", users)
 app.use("/", routes);
 
 //Server

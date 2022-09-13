@@ -22,6 +22,11 @@ const Product = connection.define('products', {
         type: Sequelize.STRING,
         allowNull: true
     },
+    active:
+    {
+        type: Sequelize.BOOLEAN,
+        allowNull: false
+    }
 });
 
 Product.sync({force:false}).then(() => {}); //Create table in case of it does not exist

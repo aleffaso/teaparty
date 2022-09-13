@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("../../partials/head.ejs") %>
+    <body>
+        <%- include("../../partials/navbar.ejs") %>
+        <main>
+            <section class="section site-portfolio">
+                <div class="d-flex justify-content-center"  style="padding-top: 5rem;">
+                    <div class="card text-center mt-4">
+                        <div class="container text-center mt-4">
+                            <a class="btn btn-success" href="/admin/user/new">Criar novo usuário</a>
+                            <table class="table table-bordered mt-4">
+                                <thead>
+                                    <tr>
+                                        <th>Usuário</th>
+                                        <th>Editar</th>
+                                        <th>Deletar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% users.forEach(users => {%>
+                                    <tr>
+                                            <td><%= users.name%></td>
+                                            <td><a class="btn btn-warning" href="/admin/users/edit/<%= users.id %>">Editar</a></th>
+                                            <form method="POST" action="/users/delete" onsubmit=deleteCheck(event,this)>
+                                                <input type="hidden" name="id" value="<%= users.id %>">
+                                                <td><button class="btn btn-danger">Deletar</button></td>
+                                            </form>
+                                    </tr>
+                                    <% }) %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <%- include("../../sections/03_footer.ejs") %>
+        </main>
+    </body>
+    <%- include("../../partials/footer.ejs") %>
+</html>

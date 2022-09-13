@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+    <html lang="en">
+        <%- include("partials/head.ejs") %>
+        <body>
+            <%- include("partials/navbar.ejs") %>
+            <main>
+                <section class="section site-portfolio">
+                    <div class="container d-flex justify-content-center">
+                        <div class="card text-center">
+                            <div class="card-header" style="width: 18rem;"><br>
+                                <p class="fs-4">Login</p>
+                            </div>
+                            <div class="card-body">
+                                <form method="POST" action="/login">
+                                    <input class="form-control" name="email" type="email" placeholder="email@exemplo.com">
+                                    <br>
+                                    <input class="form-control" name="password" type="password" placeholder="Senha">
+                                    <br>
+                                    <button type="submit" class="btn btn-success btn-block">Login</button>
+                                </form>
+                    
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <%- include("./sections/03_footer.ejs") %>
+            </main>
+        </body>
+        <%- include("partials/footer.ejs") %>
+        
+        <% if(message==true){ %>
+            <script>
+                renderSuccessMessage('<%=title%>')
+            </script>
+        <% }else if(message==false){ %> %>
+            <script>
+                renderFailMessage('<%=title%>')
+            </script>
+        <% } %>
+    </html> 
