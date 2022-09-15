@@ -13,11 +13,11 @@ routes.get("/admin/users", adminAuth, (req, res) => {
     renderUsers(res, req.session.token, null, null)
 });
 
-routes.get("/admin/user/new",  (req, res) => {
+routes.get("/admin/user/new", adminAuth, (req, res) => {
     res.render("admin/users/new", {token:req.session.token});
 });
 
-routes.post("/users/new", (req,res) => {
+routes.post("/users/new", adminAuth, (req,res) => {
 
     var {name, email, password, passwordCheck} = req.body;
 
