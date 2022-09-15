@@ -21,11 +21,6 @@ const Product = connection.define('products', {
     {
         type: Sequelize.STRING,
         allowNull: true
-    },
-    active:
-    {
-        type: Sequelize.BOOLEAN,
-        allowNull: false
     }
 });
 
